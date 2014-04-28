@@ -113,7 +113,7 @@
     
     if (indexPath.section == 0)
     {
-        cell.backgroundColor = [UIColor blueColor];
+        cell.backgroundColor = [UIColor greenColor];
     }
     else
     {
