@@ -7,6 +7,8 @@
 //
 
 #import "MSOWOuterSpaceTableViewController.h"
+#import "AstronomicalData.h"
+#import "MSOWSpaceObject.h"
 
 @interface MSOWOuterSpaceTableViewController ()
 
@@ -26,32 +28,45 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+//    self.planets = [[NSMutableArray alloc] init]; used to add objects to the array one at a time
+//  To set up and array of static NSString Objects
+    
+//    NSString *planet1 = @"Mercury";
+//    NSString *planet2 = @"Venus";
+//    NSString *planet3 = @"Earth";
+//    NSString *planet4 = @"Mars";
+//    NSString *planet5 = @"Jupiter";
+//    NSString *planet6 = @"Saturn";
+//    NSString *planet7 = @"Uranus";
+//    NSString *planet8 = @"Neptune";
+//    
+//    self.planets = [[NSMutableArray alloc] initWithObjects:planet1, planet2, planet3, planet4, planet5, planet6, planet7, planet8, nil];
+    
+    //to add objects one at a time to an array instead of initializing with objects as shown above.
+//    [self.planets addObject:planet1];
+//    [self.planets addObject:planet2];
+//    [self.planets addObject:planet3];
+//    [self.planets addObject:planet4];
+//    [self.planets addObject:planet5];
+//    [self.planets addObject:planet6];
+//    [self.planets addObject:planet7];
+//    [self.planets addObject:planet8];
+    
     self.planets = [[NSMutableArray alloc] init];
     
-    NSString *planet1 = @"Mercury";
-    NSString *planet2 = @"Venus";
-    NSString *planet3 = @"Earth";
-    NSString *planet4 = @"Mars";
-    NSString *planet5 = @"Jupiter";
-    NSString *planet6 = @"Saturn";
-    NSString *planet7 = @"Uranus";
-    NSString *planet8 = @"Neptune";
-    
-    [self.planets addObject:planet1];
-    [self.planets addObject:planet2];
-    [self.planets addObject:planet3];
-    [self.planets addObject:planet4];
-    [self.planets addObject:planet5];
-    [self.planets addObject:planet6];
-    [self.planets addObject:planet7];
-    [self.planets addObject:planet8];
-    
+    for (NSMutableDictionary *planetDictionaries in [AstronomicalData allKnownPlanets])
+    {
+        NSString *planetImageName = [NSString stringWithFormat:@"%@.jpg", planetDictionaries[PLANET_NAME]];
+        MSOWSpaceObject *currentPlanet = [[MSOWSpaceObject alloc] initWithPlanetData:planetDictionaries andImage:[UIImage imageNamed:planetImageName]];
+        [self.planets addObject:currentPlanet];
+    }
     
     //Set Mutable Dictionary below
 //    NSMutableDictionary *myDictionary = [[NSMutableDictionary alloc] init];
@@ -107,18 +122,30 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
+    // Configure the cell...one at a time first and then for multiple sections
     //cell.textLabel.text = @"whoa my first table view";
-    cell.textLabel.text = [self.planets objectAtIndex:indexPath.row];
+    //for multiple sections
+//    cell.textLabel.text = [self.planets objectAtIndex:indexPath.row];
+//    
+//    if (indexPath.section == 0)
+//    {
+//        cell.backgroundColor = [UIColor greenColor];
+//    }
+//    else
+//    {
+//        cell.backgroundColor = [UIColor yellowColor];
+//    }
+//    return cell;
     
-    if (indexPath.section == 0)
-    {
-        cell.backgroundColor = [UIColor greenColor];
-    }
-    else
-    {
-        cell.backgroundColor = [UIColor yellowColor];
-    }
+    MSOWSpaceObject *planet = [self.planets objectAtIndex:indexPath.row];
+    cell.textLabel.text = planet.planetName;
+    cell.detailTextLabel.text = planet.planetNickname;
+    cell.imageView.image = planet.planetImage;
+    
+    cell.backgroundColor = [UIColor clearColor];
+    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.detailTextLabel.textColor = [UIColor colorWithWhite:0.5 alpha:1.0];
+    
     return cell;
 }
 

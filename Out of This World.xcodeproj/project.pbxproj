@@ -22,6 +22,18 @@
 		088E40E4190AF37800837117 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 088E40E2190AF37800837117 /* InfoPlist.strings */; };
 		088E40E6190AF37800837117 /* Out_of_This_WorldTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 088E40E5190AF37800837117 /* Out_of_This_WorldTests.m */; };
 		088E40F1190AF49E00837117 /* MSOWOuterSpaceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 088E40F0190AF49E00837117 /* MSOWOuterSpaceTableViewController.m */; };
+		088E4196190EDE6300837117 /* Earth.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 088E418C190EDE6300837117 /* Earth.jpg */; };
+		088E4197190EDE6300837117 /* EinsteinRing.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 088E418D190EDE6300837117 /* EinsteinRing.jpg */; };
+		088E4198190EDE6300837117 /* Jupiter.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 088E418E190EDE6300837117 /* Jupiter.jpg */; };
+		088E4199190EDE6300837117 /* Mars.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 088E418F190EDE6300837117 /* Mars.jpg */; };
+		088E419A190EDE6300837117 /* Mercury.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 088E4190190EDE6300837117 /* Mercury.jpg */; };
+		088E419B190EDE6300837117 /* Neptune.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 088E4191190EDE6300837117 /* Neptune.jpg */; };
+		088E419C190EDE6300837117 /* Orion.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 088E4192190EDE6300837117 /* Orion.jpg */; };
+		088E419D190EDE6300837117 /* Saturn.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 088E4193190EDE6300837117 /* Saturn.jpg */; };
+		088E419E190EDE6300837117 /* Uranus.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 088E4194190EDE6300837117 /* Uranus.jpg */; };
+		088E419F190EDE6300837117 /* Venus.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 088E4195190EDE6300837117 /* Venus.jpg */; };
+		088E41A2190EDEA600837117 /* MSOWSpaceObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 088E41A1190EDEA600837117 /* MSOWSpaceObject.m */; };
+		088E41F5190F0C2900837117 /* MSOWPlanetImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 088E41F4190F0C2900837117 /* MSOWPlanetImageViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +68,20 @@
 		088E40E5190AF37800837117 /* Out_of_This_WorldTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Out_of_This_WorldTests.m; sourceTree = "<group>"; };
 		088E40EF190AF49E00837117 /* MSOWOuterSpaceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSOWOuterSpaceTableViewController.h; path = ../MSOWOuterSpaceTableViewController.h; sourceTree = "<group>"; };
 		088E40F0190AF49E00837117 /* MSOWOuterSpaceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MSOWOuterSpaceTableViewController.m; path = ../MSOWOuterSpaceTableViewController.m; sourceTree = "<group>"; };
+		088E418C190EDE6300837117 /* Earth.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Earth.jpg; sourceTree = "<group>"; };
+		088E418D190EDE6300837117 /* EinsteinRing.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = EinsteinRing.jpg; sourceTree = "<group>"; };
+		088E418E190EDE6300837117 /* Jupiter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Jupiter.jpg; sourceTree = "<group>"; };
+		088E418F190EDE6300837117 /* Mars.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Mars.jpg; sourceTree = "<group>"; };
+		088E4190190EDE6300837117 /* Mercury.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Mercury.jpg; sourceTree = "<group>"; };
+		088E4191190EDE6300837117 /* Neptune.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Neptune.jpg; sourceTree = "<group>"; };
+		088E4192190EDE6300837117 /* Orion.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Orion.jpg; sourceTree = "<group>"; };
+		088E4193190EDE6300837117 /* Saturn.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Saturn.jpg; sourceTree = "<group>"; };
+		088E4194190EDE6300837117 /* Uranus.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Uranus.jpg; sourceTree = "<group>"; };
+		088E4195190EDE6300837117 /* Venus.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Venus.jpg; sourceTree = "<group>"; };
+		088E41A0190EDEA600837117 /* MSOWSpaceObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSOWSpaceObject.h; sourceTree = "<group>"; };
+		088E41A1190EDEA600837117 /* MSOWSpaceObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSOWSpaceObject.m; sourceTree = "<group>"; };
+		088E41F3190F0C2900837117 /* MSOWPlanetImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSOWPlanetImageViewController.h; sourceTree = "<group>"; };
+		088E41F4190F0C2900837117 /* MSOWPlanetImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSOWPlanetImageViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +146,10 @@
 				088E40CC190AF37800837117 /* Main.storyboard */,
 				088E40EF190AF49E00837117 /* MSOWOuterSpaceTableViewController.h */,
 				088E40F0190AF49E00837117 /* MSOWOuterSpaceTableViewController.m */,
+				088E41F3190F0C2900837117 /* MSOWPlanetImageViewController.h */,
+				088E41F4190F0C2900837117 /* MSOWPlanetImageViewController.m */,
+				088E41A0190EDEA600837117 /* MSOWSpaceObject.h */,
+				088E41A1190EDEA600837117 /* MSOWSpaceObject.m */,
 				088E40D2190AF37800837117 /* Images.xcassets */,
 				088E40C1190AF37800837117 /* Supporting Files */,
 			);
@@ -129,6 +159,7 @@
 		088E40C1190AF37800837117 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				088E418B190EDE6300837117 /* planet-images */,
 				0846B93F190C6B1C0071280A /* AstronomicalData.h */,
 				0846B940190C6B1C0071280A /* AstronomicalData.m */,
 				088E40C2190AF37800837117 /* Out of This World-Info.plist */,
@@ -155,6 +186,23 @@
 				088E40E2190AF37800837117 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		088E418B190EDE6300837117 /* planet-images */ = {
+			isa = PBXGroup;
+			children = (
+				088E418C190EDE6300837117 /* Earth.jpg */,
+				088E418D190EDE6300837117 /* EinsteinRing.jpg */,
+				088E418E190EDE6300837117 /* Jupiter.jpg */,
+				088E418F190EDE6300837117 /* Mars.jpg */,
+				088E4190190EDE6300837117 /* Mercury.jpg */,
+				088E4191190EDE6300837117 /* Neptune.jpg */,
+				088E4192190EDE6300837117 /* Orion.jpg */,
+				088E4193190EDE6300837117 /* Saturn.jpg */,
+				088E4194190EDE6300837117 /* Uranus.jpg */,
+				088E4195190EDE6300837117 /* Venus.jpg */,
+			);
+			path = "planet-images";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,9 +282,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				088E4196190EDE6300837117 /* Earth.jpg in Resources */,
+				088E419F190EDE6300837117 /* Venus.jpg in Resources */,
+				088E419A190EDE6300837117 /* Mercury.jpg in Resources */,
+				088E419D190EDE6300837117 /* Saturn.jpg in Resources */,
+				088E419E190EDE6300837117 /* Uranus.jpg in Resources */,
 				088E40D3190AF37800837117 /* Images.xcassets in Resources */,
+				088E419B190EDE6300837117 /* Neptune.jpg in Resources */,
+				088E4199190EDE6300837117 /* Mars.jpg in Resources */,
 				088E40C5190AF37800837117 /* InfoPlist.strings in Resources */,
 				088E40CE190AF37800837117 /* Main.storyboard in Resources */,
+				088E4197190EDE6300837117 /* EinsteinRing.jpg in Resources */,
+				088E4198190EDE6300837117 /* Jupiter.jpg in Resources */,
+				088E419C190EDE6300837117 /* Orion.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,6 +313,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				088E41F5190F0C2900837117 /* MSOWPlanetImageViewController.m in Sources */,
+				088E41A2190EDEA600837117 /* MSOWSpaceObject.m in Sources */,
 				088E40CB190AF37800837117 /* MSOWAppDelegate.m in Sources */,
 				088E40F1190AF49E00837117 /* MSOWOuterSpaceTableViewController.m in Sources */,
 				088E40C7190AF37800837117 /* main.m in Sources */,
