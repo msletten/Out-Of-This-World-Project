@@ -52,6 +52,35 @@
             </objects>
             <point key="canvasLocation" x="655" y="45"/>
         </scene>
+        <!--Planet Data View Controller-->
+        <scene sceneID="sLd-ES-0eK">
+            <objects>
+                <viewController id="Jvo-3S-2eD" customClass="MSOWPlanetDataViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="daD-Yn-U9b"/>
+                        <viewControllerLayoutGuide type="bottom" id="MtF-PY-EDc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="j3Z-yA-EwJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ulb-TZ-u3P">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="planetDataTableView" destination="ulb-TZ-u3P" id="Oi1-SE-WVa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7c3-YZ-DQH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1101" y="187"/>
+        </scene>
         <!--Planet Image View Controller-->
         <scene sceneID="Hf2-3n-5mO">
             <objects>
@@ -78,7 +107,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gEG-sw-fsh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1051" y="45"/>
+            <point key="canvasLocation" x="1101" y="-495"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fx7-tt-Lib">

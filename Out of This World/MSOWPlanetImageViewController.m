@@ -26,12 +26,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    self.planetImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Jupiter.jpg"]];
+	// Do any additional setup after loading the view. Use self to reference object declared in .h file and access property of that object
+    self.planetImageView = [[UIImageView alloc] initWithImage:self.currentPlanetObject.planetImage];
     self.planetScrollView.contentSize = self.planetImageView.frame.size;
     [self.planetScrollView addSubview:self.planetImageView];
-    self.planetScrollView.maximumZoomScale = 4;
-    self.planetScrollView.minimumZoomScale= 1;
+   // To configure scroll view zoom, use property delegate of UIScrollView to set equal to self (declared above) with max and min float values
+    self.planetScrollView.delegate = self;
+    self.planetScrollView.minimumZoomScale = 0.5;
+    self.planetScrollView.maximumZoomScale = 2.0;
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,4 +42,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return self.planetImageView;
+}
 @end

@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MSOWSpaceObject.h"
 
-@interface MSOWPlanetImageViewController : UIViewController
+@interface MSOWPlanetImageViewController : UIViewController <UIScrollViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIScrollView *planetScrollView;
 @property (strong, nonatomic) UIImageView *planetImageView;
+@property (strong, nonatomic) MSOWSpaceObject *currentPlanetObject;
 
 @end

@@ -34,6 +34,7 @@
 		088E419F190EDE6300837117 /* Venus.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 088E4195190EDE6300837117 /* Venus.jpg */; };
 		088E41A2190EDEA600837117 /* MSOWSpaceObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 088E41A1190EDEA600837117 /* MSOWSpaceObject.m */; };
 		088E41F5190F0C2900837117 /* MSOWPlanetImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 088E41F4190F0C2900837117 /* MSOWPlanetImageViewController.m */; };
+		088E42C619107BA300837117 /* MSOWPlanetDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 088E42C519107BA300837117 /* MSOWPlanetDataViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,8 @@
 		088E41A1190EDEA600837117 /* MSOWSpaceObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSOWSpaceObject.m; sourceTree = "<group>"; };
 		088E41F3190F0C2900837117 /* MSOWPlanetImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSOWPlanetImageViewController.h; sourceTree = "<group>"; };
 		088E41F4190F0C2900837117 /* MSOWPlanetImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSOWPlanetImageViewController.m; sourceTree = "<group>"; };
+		088E42C419107BA300837117 /* MSOWPlanetDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSOWPlanetDataViewController.h; sourceTree = "<group>"; };
+		088E42C519107BA300837117 /* MSOWPlanetDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSOWPlanetDataViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +151,8 @@
 				088E40F0190AF49E00837117 /* MSOWOuterSpaceTableViewController.m */,
 				088E41F3190F0C2900837117 /* MSOWPlanetImageViewController.h */,
 				088E41F4190F0C2900837117 /* MSOWPlanetImageViewController.m */,
+				088E42C419107BA300837117 /* MSOWPlanetDataViewController.h */,
+				088E42C519107BA300837117 /* MSOWPlanetDataViewController.m */,
 				088E41A0190EDEA600837117 /* MSOWSpaceObject.h */,
 				088E41A1190EDEA600837117 /* MSOWSpaceObject.m */,
 				088E40D2190AF37800837117 /* Images.xcassets */,
@@ -314,6 +319,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				088E41F5190F0C2900837117 /* MSOWPlanetImageViewController.m in Sources */,
+				088E42C619107BA300837117 /* MSOWPlanetDataViewController.m in Sources */,
 				088E41A2190EDEA600837117 /* MSOWSpaceObject.m in Sources */,
 				088E40CB190AF37800837117 /* MSOWAppDelegate.m in Sources */,
 				088E40F1190AF49E00837117 /* MSOWOuterSpaceTableViewController.m in Sources */,

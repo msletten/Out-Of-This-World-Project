@@ -9,6 +9,7 @@
 #import "MSOWOuterSpaceTableViewController.h"
 #import "AstronomicalData.h"
 #import "MSOWSpaceObject.h"
+#import "MSOWPlanetImageViewController.h"
 
 @interface MSOWOuterSpaceTableViewController ()
 
@@ -85,6 +86,23 @@
     NSNumber    *myFloat = [NSNumber numberWithFloat:4.31];
     NSLog(@"%@", myFloat);
     
+}
+//Segue data passing below. isKindOfClass is a BOOL call on sender(id), which is a TableViewCell in this case. destinationViewController is a property of segue, and can be called with BOOL isKindOfClass also. tableView is a property of a TableViewController, accessible with self. IBOutlets and UI elements are not available to the segue method until they are passed to a view controller. 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([sender isKindOfClass:[UITableViewCell class]])
+    {
+        if ([segue.destinationViewController isKindOfClass:[MSOWPlanetImageViewController class]])
+        {
+            MSOWPlanetImageViewController *nextViewController = segue.destinationViewController;
+            NSIndexPath *planetCells = [self.tableView indexPathForCell:sender];
+            //Use the longfor to index into a specific table cell as shown below;
+            //MSOWSpaceObject *selectedPlanet = [self.planets objectAtIndex:planetCells.row];
+            //or alternativelly by using a literal
+            MSOWSpaceObject *selectedPlanet = self.planets[planetCells.row];
+            nextViewController.currentPlanetObject = selectedPlanet;
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning
