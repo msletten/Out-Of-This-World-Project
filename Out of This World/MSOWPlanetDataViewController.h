@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MSOWSpaceObject.h"
 
-@interface MSOWPlanetDataViewController : UIViewController
+@interface MSOWPlanetDataViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+
 @property (strong, nonatomic) IBOutlet UITableView *planetDataTableView;
+@property (strong, nonatomic) MSOWSpaceObject *planetObject;
 
 @end

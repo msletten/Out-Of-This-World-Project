@@ -10,6 +10,7 @@
 #import "AstronomicalData.h"
 #import "MSOWSpaceObject.h"
 #import "MSOWPlanetImageViewController.h"
+#import "MSOWPlanetDataViewController.h"
 
 @interface MSOWOuterSpaceTableViewController ()
 
@@ -87,6 +88,7 @@
     NSLog(@"%@", myFloat);
     
 }
+#pragma mark -Prepapre for Segue Method
 //Segue data passing below. isKindOfClass is a BOOL call on sender(id), which is a TableViewCell in this case. destinationViewController is a property of segue, and can be called with BOOL isKindOfClass also. tableView is a property of a TableViewController, accessible with self. IBOutlets and UI elements are not available to the segue method until they are passed to a view controller. 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -101,6 +103,17 @@
             //or alternativelly by using a literal
             MSOWSpaceObject *selectedPlanet = self.planets[planetCells.row];
             nextViewController.currentPlanetObject = selectedPlanet;
+        }
+    }
+    //To set a segue with a accessory detail button, use below, linking an instance of MSOWSpaceObject in the DataViewController with the row selected in the TableView
+    if ([sender isKindOfClass:[NSIndexPath class]])
+    {
+        if ([segue.destinationViewController isKindOfClass:[MSOWPlanetDataViewController class]])
+        {
+            MSOWPlanetDataViewController *planetDataViewController = segue.destinationViewController;
+            NSIndexPath *planetDataTable = sender;
+            MSOWSpaceObject *selectedPlanet = self.planets[planetDataTable.row];
+            planetDataViewController.planetObject = selectedPlanet;
         }
     }
 }
@@ -165,6 +178,13 @@
     cell.detailTextLabel.textColor = [UIColor colorWithWhite:0.5 alpha:1.0];
     
     return cell;
+}
+
+#pragma mark UITableView Delegate
+
+-(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier:@"push to planet data" sender:indexPath];
 }
 
 /*
