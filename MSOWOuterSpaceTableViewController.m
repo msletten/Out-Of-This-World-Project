@@ -130,7 +130,15 @@
 {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 1;
+    if ([self.addSpaceObject count])
+    {
+        return 2;
+    }
+    else
+    {
+        return 1;
+    }
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -145,7 +153,14 @@
 //    {
 //    return 2;
 //    }
-    return [self.planets count];
+    if (section == 1)
+    {
+        return [self.addSpaceObject count];
+    }
+    else
+    {
+        return [self.planets count];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -154,6 +169,10 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...one at a time first and then for multiple sections
+    if (indexPath.section == 1)
+    {
+        //Use new Space Object to customize Cell
+    }
     //cell.textLabel.text = @"whoa my first table view";
     //for multiple sections
 //    cell.textLabel.text = [self.planets objectAtIndex:indexPath.row];
@@ -167,12 +186,15 @@
 //        cell.backgroundColor = [UIColor yellowColor];
 //    }
 //    return cell;
-    
-    MSOWSpaceObject *planet = [self.planets objectAtIndex:indexPath.row];
-    cell.textLabel.text = planet.planetName;
-    cell.detailTextLabel.text = planet.planetNickname;
-    cell.imageView.image = planet.planetImage;
-    
+    else
+    {
+        //Access the MSOWSpaceObject from the planets array, use the properties for MSOWSpaceObject to update cell's properties
+        MSOWSpaceObject *planet = [self.planets objectAtIndex:indexPath.row];
+        cell.textLabel.text = planet.planetName;
+        cell.detailTextLabel.text = planet.planetNickname;
+        cell.imageView.image = planet.planetImage;
+    }
+    //customize the appearance of the TableViewCells
     cell.backgroundColor = [UIColor clearColor];
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.detailTextLabel.textColor = [UIColor colorWithWhite:0.5 alpha:1.0];
@@ -181,7 +203,7 @@
 }
 
 #pragma mark UITableView Delegate
-
+//the method below uses an NSString Identifier set up in the Storyboard and an id for the sender, which can be any object
 -(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
     [self performSegueWithIdentifier:@"push to planet data" sender:indexPath];

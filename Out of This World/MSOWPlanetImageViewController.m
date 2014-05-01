@@ -27,6 +27,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view. Use self to reference object declared in .h file and access property of that object
+    //To set up a scrollView, use the object or class with the Scroll View Delegate protocol to set a specific view for scrolling
     self.planetImageView = [[UIImageView alloc] initWithImage:self.currentPlanetObject.planetImage];
     self.planetScrollView.contentSize = self.planetImageView.frame.size;
     [self.planetScrollView addSubview:self.planetImageView];
@@ -42,6 +43,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+//Set the View for Scrolling with the method below
 -(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
     return self.planetImageView;

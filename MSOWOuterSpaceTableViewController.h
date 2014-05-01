@@ -11,5 +11,6 @@
 @interface MSOWOuterSpaceTableViewController : UITableViewController
 
 @property (strong, nonatomic) NSMutableArray *planets;
+@property (strong, nonatomic) NSMutableArray *addSpaceObject;
 
 @end

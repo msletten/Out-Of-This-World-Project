@@ -8,13 +8,13 @@
         <scene sceneID="vUw-Ii-gCE">
             <objects>
                 <tableViewController id="5Zl-yV-ede" customClass="MSOWOuterSpaceTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="6n3-Rt-abr">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="6n3-Rt-abr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="O3a-cV-VwK" detailTextLabel="f2I-0I-lVo" style="IBUITableViewCellStyleSubtitle" id="7sc-CJ-vd9">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="119" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7sc-CJ-vd9" id="hsk-bV-ZPw">
                                     <rect key="frame" x="0.0" y="0.0" width="253" height="44"/>
@@ -46,7 +46,15 @@
                             <outlet property="delegate" destination="5Zl-yV-ede" id="Au1-NN-3KA"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Planets" id="1gG-1j-MKQ"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Planets" id="1gG-1j-MKQ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="AFf-st-b6S">
+                            <connections>
+                                <segue destination="4PK-Gu-wHy" kind="modal" id="7uu-De-fOo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="Jvo-3S-2eD" kind="push" identifier="push to planet data" id="BS8-oN-Wtz"/>
                     </connections>
@@ -115,7 +123,97 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7c3-YZ-DQH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1101" y="187"/>
+            <point key="canvasLocation" x="1119" y="-157"/>
+        </scene>
+        <!--Add Object View Controller-->
+        <scene sceneID="fvM-Hq-InW">
+            <objects>
+                <viewController id="4PK-Gu-wHy" customClass="MSOWAddObjectViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JaF-la-D2R"/>
+                        <viewControllerLayoutGuide type="bottom" id="jAG-M9-K3E"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SNE-8L-n5p">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NIG-EJ-TnH">
+                                <rect key="frame" x="27" y="309" width="57" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.95686280729999995" green="0.82352948189999997" blue="0.02745098248" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" name="HoeflerText-Black" family="Hoefler Text" pointSize="15"/>
+                                <state key="normal" title="Add">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addButtonPressed:" destination="4PK-Gu-wHy" eventType="touchUpInside" id="VC3-7U-gcX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kh4-tB-ACx">
+                                <rect key="frame" x="237" y="309" width="57" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.95686280729999995" green="0.82352948189999997" blue="0.02745098248" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" name="HoeflerText-Black" family="Hoefler Text" pointSize="15"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonPressed:" destination="4PK-Gu-wHy" eventType="touchUpInside" id="ne4-Pz-g6E"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c4t-1Z-MN5">
+                                <rect key="frame" x="27" y="43" width="267" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Diameter" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="odN-27-n2I">
+                                <rect key="frame" x="27" y="125" width="267" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Moons" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pwd-8B-GYp">
+                                <rect key="frame" x="27" y="212" width="267" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Interesting Fact" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ppA-pE-ImO">
+                                <rect key="frame" x="27" y="259" width="267" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Temperature" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eE4-J0-bHm">
+                                <rect key="frame" x="27" y="168" width="267" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nickname" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eHq-F1-v7O">
+                                <rect key="frame" x="27" y="87" width="267" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="addDiameterText" destination="odN-27-n2I" id="V1n-Gg-xqD"/>
+                        <outlet property="addFactText" destination="ppA-pE-ImO" id="x49-Tz-LGV"/>
+                        <outlet property="addMoonsText" destination="pwd-8B-GYp" id="hE6-Zi-N5Z"/>
+                        <outlet property="addNameText" destination="c4t-1Z-MN5" id="pZp-xz-sd9"/>
+                        <outlet property="addNicknameText" destination="eHq-F1-v7O" id="eu7-Ja-l7G"/>
+                        <outlet property="addTemperatureText" destination="eE4-J0-bHm" id="i9P-Yn-kxA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HSN-Yf-7Rr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1119" y="524"/>
         </scene>
         <!--Planet Image View Controller-->
         <scene sceneID="Hf2-3n-5mO">
@@ -143,7 +241,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gEG-sw-fsh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1101" y="-495"/>
+            <point key="canvasLocation" x="1119" y="-839"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fx7-tt-Lib">
