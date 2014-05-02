@@ -18,6 +18,25 @@
 
 @implementation MSOWOuterSpaceTableViewController
 
+#pragma mark - Lazy Instantiation of Properites
+-(NSMutableArray *) planets
+{
+    if (!_planets)
+    {
+        _planets = [[NSMutableArray alloc] init];
+    }
+    return _planets;
+}
+
+-(NSMutableArray *) addSpaceObject
+{
+    if (!_addSpaceObject)
+    {
+        _addSpaceObject = [[NSMutableArray alloc] init];
+    }
+    return _addSpaceObject;
+}
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -60,8 +79,8 @@
 //    [self.planets addObject:planet6];
 //    [self.planets addObject:planet7];
 //    [self.planets addObject:planet8];
-    
-    self.planets = [[NSMutableArray alloc] init];
+    //Commented out this instantiated planets array because we replaced it with lazy instantiation above.
+    //self.planets = [[NSMutableArray alloc] init];
     
     for (NSMutableDictionary *planetDictionaries in [AstronomicalData allKnownPlanets])
     {
@@ -80,12 +99,7 @@
 //    
 //    NSString *blueString = [myDictionary objectForKey:@"Ocean Color"];
 //    NSLog(@"%@", blueString);
-    
-    
-    NSNumber *myNumber = [NSNumber numberWithInt:5];
-    NSLog(@"%@", myNumber);
-    NSNumber    *myFloat = [NSNumber numberWithFloat:4.31];
-    NSLog(@"%@", myFloat);
+
     
 }
 #pragma mark -Prepapre for Segue Method
@@ -98,23 +112,45 @@
         {
             MSOWPlanetImageViewController *nextViewController = segue.destinationViewController;
             NSIndexPath *planetCells = [self.tableView indexPathForCell:sender];
-            //Use the longfor to index into a specific table cell as shown below;
+            //Use the longform to index into a specific table cell as shown below;
             //MSOWSpaceObject *selectedPlanet = [self.planets objectAtIndex:planetCells.row];
-            //or alternativelly by using a literal
-            MSOWSpaceObject *selectedPlanet = self.planets[planetCells.row];
+            //or alternativelly by using a literal. Use the if, else if argument to determine which planet scrollView shows up, the existing planet from the array or the planet that was added.
+            MSOWSpaceObject *selectedPlanet;
+            if (planetCells.section == 0)
+            {
+                selectedPlanet = self.planets[planetCells.row];
+            }
+            else if (planetCells.section == 1)
+            {
+                selectedPlanet = self.addSpaceObject[planetCells.row];
+            }
             nextViewController.currentPlanetObject = selectedPlanet;
         }
     }
-    //To set a segue with a accessory detail button, use below, linking an instance of MSOWSpaceObject in the DataViewController with the row selected in the TableView
+    //To set a segue with a accessory detail button, use below, linking an instance of MSOWSpaceObject in the DataViewController with the row selected in the TableView. The else if establishes how to have the added object be the segue view controller object.
     if ([sender isKindOfClass:[NSIndexPath class]])
     {
         if ([segue.destinationViewController isKindOfClass:[MSOWPlanetDataViewController class]])
         {
-            MSOWPlanetDataViewController *planetDataViewController = segue.destinationViewController;
+            MSOWPlanetDataViewController *targetDataViewController = segue.destinationViewController;
             NSIndexPath *planetDataTable = sender;
-            MSOWSpaceObject *selectedPlanet = self.planets[planetDataTable.row];
-            planetDataViewController.planetObject = selectedPlanet;
+            MSOWSpaceObject *selectedPlanet;
+            if (planetDataTable.section == 0)
+            {
+                selectedPlanet = self.planets[planetDataTable.row];
+            }
+            else if (planetDataTable.section == 1)
+            {
+                selectedPlanet = self.addSpaceObject[planetDataTable.row];
+            }
+            targetDataViewController.planetObject = selectedPlanet;
         }
+    }
+    //To use a ViewController delegate property to access the current View Controller object to pass data/info to/from another View Controller using a protocol to tell a delegate to perform a method
+    if ([segue.destinationViewController isKindOfClass:[MSOWAddObjectViewController class]])
+    {
+        MSOWAddObjectViewController *addObjectVC = segue.destinationViewController;
+        addObjectVC.addObjectDelegate = self;
     }
 }
 
@@ -123,6 +159,29 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - MSOWAddObjectViewControllerDelegate
+
+- (void)didCancel
+{
+    //NSLog(@"didCancel");
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+//To add a new object to an existing array, we use our protocol method to create the array once and then recognize a new object which gets added to the existing array and saved. Using a delegate we're giving access to our tableViewController from our add Object controller so the data can be passed. Storing is only true for the applications session.
+- (void)addObject:(MSOWSpaceObject *)addedSpaceObject
+{
+    //Commented out instance of addSpaceObject here because replaced it with lazy instantiation above
+    //    if (!self.addSpaceObject)
+//    {
+//        self.addSpaceObject = [[NSMutableArray alloc] init];
+//    }
+    [self.addSpaceObject addObject:addedSpaceObject];
+    //NSLog(@"addObject");
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    [self.tableView reloadData];
+}
+
 
 #pragma mark - Table view data source
 
@@ -169,9 +228,13 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...one at a time first and then for multiple sections
+    //Use new Space Object to customize added table cell title and subtitle, and a static image for all added objects
     if (indexPath.section == 1)
     {
-        //Use new Space Object to customize Cell
+        MSOWSpaceObject *addedPlanet = [self.addSpaceObject objectAtIndex:indexPath.row];
+        cell.textLabel.text = addedPlanet.planetName;
+        cell.detailTextLabel.text = addedPlanet.planetNickname;
+        cell.imageView.image = addedPlanet.planetImage;
     }
     //cell.textLabel.text = @"whoa my first table view";
     //for multiple sections
@@ -186,15 +249,15 @@
 //        cell.backgroundColor = [UIColor yellowColor];
 //    }
 //    return cell;
+    //Access the list of MSOWSpaceObject dictionaries from the planets array, use the properties for MSOWSpaceObject to update cell's properties
     else
     {
-        //Access the MSOWSpaceObject from the planets array, use the properties for MSOWSpaceObject to update cell's properties
         MSOWSpaceObject *planet = [self.planets objectAtIndex:indexPath.row];
         cell.textLabel.text = planet.planetName;
         cell.detailTextLabel.text = planet.planetNickname;
         cell.imageView.image = planet.planetImage;
     }
-    //customize the appearance of the TableViewCells
+    //customize the appearance of the TableViewCells in the object dictionary
     cell.backgroundColor = [UIColor clearColor];
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.detailTextLabel.textColor = [UIColor colorWithWhite:0.5 alpha:1.0];
