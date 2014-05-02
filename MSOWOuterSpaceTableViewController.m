@@ -17,6 +17,7 @@
 @end
 
 @implementation MSOWOuterSpaceTableViewController
+#define ADDED_SPACED_OBJECTS_KEY @"Added Space Objects Array"
 
 #pragma mark - Lazy Instantiation of Properites
 -(NSMutableArray *) planets
@@ -176,12 +177,32 @@
 //        self.addSpaceObject = [[NSMutableArray alloc] init];
 //    }
     [self.addSpaceObject addObject:addedSpaceObject];
-    //NSLog(@"addObject");
+    //Will save to NSUserDefaults here
+    NSMutableArray *spaceObjectsAsPropertyLists = [[[NSUserDefaults standardUserDefaults] arrayForKey:ADDED_SPACED_OBJECTS_KEY] mutableCopy];
+    if (!spaceObjectsAsPropertyLists) spaceObjectsAsPropertyLists = [[NSMutableArray alloc] init];
+    [spaceObjectsAsPropertyLists addObject:[self spaceObjectAsAPropertyList:addedSpaceObject]];
+    [[NSUserDefaults standardUserDefaults] setObject:spaceObjectsAsPropertyLists forKey:ADDED_SPACED_OBJECTS_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     [self dismissViewControllerAnimated:YES completion:nil];
     
     [self.tableView reloadData];
 }
 
+#pragma mark - Helper Methods
+//NSDictionary below establishes the new objects data as a dictionary that can be added to the array and stored.
+-(NSDictionary *)spaceObjectAsAPropertyList:(MSOWSpaceObject *)additionalSpaceObject
+{
+    NSData *addedImageData = UIImagePNGRepresentation(additionalSpaceObject.planetImage);
+    NSDictionary *planetDictionary = @{PLANET_NAME : additionalSpaceObject.planetName, PLANET_GRAVITY : @(additionalSpaceObject.planetGravitationalForce), PLANET_DIAMETER : @(additionalSpaceObject.planetDiameter), PLANET_YEAR_LENGTH : @(additionalSpaceObject.planetYearLength), PLANET_DAY_LENGTH : @(additionalSpaceObject.planetDayLength), PLANET_TEMPERATURE : @(additionalSpaceObject.planetTemperature), PLANET_NUMBER_OF_MOONS : @(additionalSpaceObject.planetMoons), PLANET_NICKNAME : additionalSpaceObject.planetNickname, PLANET_INTERESTING_FACT : additionalSpaceObject.planetFact, PLANET_IMAGE : addedImageData};
+    
+    return planetDictionary;
+}
+
+-(MSOWSpaceObject *)spaceObjectForDictionary:(NSDictionary *)addedDictionary
+{
+    MSOWSpaceObject *addedObject = [[MSOWSpaceObject alloc] initWithPlanetData:addedDictionary andImage:[UIImage imageNamed:@"EinsteinRing.jpg"]];
+    return addedObject;
+}
 
 #pragma mark - Table view data source
 

@@ -14,4 +14,5 @@
 @property (strong, nonatomic) NSMutableArray *planets;
 @property (strong, nonatomic) NSMutableArray *addSpaceObject;
 
+//NSUserDefaults can hold objects that are or are entirely comprised of property lists which include NSData, NSString, NSNumber, NSDate, NSArray, or NSDictionary or properties such as BOOLs, Floats, doubles, integers, URLs
 @end
