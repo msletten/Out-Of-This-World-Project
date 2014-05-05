@@ -89,6 +89,13 @@
         MSOWSpaceObject *currentPlanet = [[MSOWSpaceObject alloc] initWithPlanetData:planetDictionaries andImage:[UIImage imageNamed:planetImageName]];
         [self.planets addObject:currentPlanet];
     }
+    NSArray *myPlanetsAsPropertyLists = [[NSUserDefaults standardUserDefaults] arrayForKey:ADDED_SPACED_OBJECTS_KEY];
+    for (NSDictionary *dictonary in myPlanetsAsPropertyLists)
+    {
+        MSOWSpaceObject *currentSpaceObject = [self spaceObjectForDictionary:dictonary];
+        [self.addSpaceObject addObject:currentSpaceObject];
+    }
+    
     
     //Set Mutable Dictionary below
 //    NSMutableDictionary *myDictionary = [[NSMutableDictionary alloc] init];
@@ -177,7 +184,7 @@
 //        self.addSpaceObject = [[NSMutableArray alloc] init];
 //    }
     [self.addSpaceObject addObject:addedSpaceObject];
-    //Will save to NSUserDefaults here
+    //Will save to NSUserDefaults here using an object as a property list
     NSMutableArray *spaceObjectsAsPropertyLists = [[[NSUserDefaults standardUserDefaults] arrayForKey:ADDED_SPACED_OBJECTS_KEY] mutableCopy];
     if (!spaceObjectsAsPropertyLists) spaceObjectsAsPropertyLists = [[NSMutableArray alloc] init];
     [spaceObjectsAsPropertyLists addObject:[self spaceObjectAsAPropertyList:addedSpaceObject]];
@@ -200,7 +207,9 @@
 
 -(MSOWSpaceObject *)spaceObjectForDictionary:(NSDictionary *)addedDictionary
 {
-    MSOWSpaceObject *addedObject = [[MSOWSpaceObject alloc] initWithPlanetData:addedDictionary andImage:[UIImage imageNamed:@"EinsteinRing.jpg"]];
+    NSData *dataForAddedImage = addedDictionary[PLANET_IMAGE];
+    UIImage *addedObjectImage = [UIImage imageWithData:dataForAddedImage];
+    MSOWSpaceObject *addedObject = [[MSOWSpaceObject alloc] initWithPlanetData:addedDictionary andImage:addedObjectImage];
     return addedObject;
 }
 
@@ -293,28 +302,37 @@
     [self performSegueWithIdentifier:@"push to planet data" sender:indexPath];
 }
 
-/*
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
-    return YES;
+    if (indexPath.section == 1) return YES;
+    else return NO;
 }
-*/
 
-/*
+
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
+        [self.addSpaceObject removeObjectAtIndex:indexPath.row];
+        
+        NSMutableArray *savedSpaceObjectData = [[NSMutableArray alloc] init];
+        for (MSOWSpaceObject *savedSpaceObject in self.addSpaceObject)
+        {
+            [savedSpaceObjectData addObject:[self spaceObjectAsAPropertyList:savedSpaceObject]];
+        }
+        [[NSUserDefaults standardUserDefaults] setObject:savedSpaceObjectData forKey:ADDED_SPACED_OBJECTS_KEY];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }   
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-*/
 
 /*
 // Override to support rearranging the table view.
