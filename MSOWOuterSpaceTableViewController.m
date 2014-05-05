@@ -303,7 +303,7 @@
 }
 
 
-// Override to support conditional editing of the table view.
+// Override to support conditional editing of the table view. Below gives ability to delete rows in a certain section of the table if there are multiple sections. 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
@@ -312,7 +312,7 @@
 }
 
 
-// Override to support editing the table view.
+// Override to support editing the table view. Below gives the ability to delete rows in a table
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
